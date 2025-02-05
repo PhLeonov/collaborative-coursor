@@ -1,0 +1,7 @@
+{
+	"senderId": "string",
+	"messageType": "number",
+	"message": {
+		"clients": [{ "id": "string", "name": "string", "coords": { "x": "number", "y": "number" }}]
+	}
+}

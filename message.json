@@ -1,0 +1,10 @@
+{
+	"senderId": "string",
+	"messageType": "number",
+	"message": {
+		"coords": {
+			"x": "number",
+			"y": "number"
+		}
+	}
+}
