@@ -35,14 +35,20 @@ onMounted(() => {
 
 	socket.onmessage = (event) => {
 		const data = JSON.parse(event.data) as WSMessage;
-		if (data.messageType === MessageTypes.Auth) {
-			data.message.clients.forEach((c) => {
-				userCursors[c.id] = c.coords;
-			});
-		} else {
-			userCursors[data.senderId] = data.message.coords;
+		switch (data.messageType) {
+			case MessageTypes.Auth: {
+				data.message.clients.forEach((c) => {
+					userCursors[c.id] = c.coords;
+				});
+				break;
+			}
+			case MessageTypes.MouseMove: {
+				userCursors[data.senderId] = data.message.coords;
+				break;
+			}
+			default:
+				break;
 		}
-		console.log(data);
 	};
 });
 
